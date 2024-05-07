@@ -348,10 +348,9 @@ if __name__ == '__main__':
     # fileNames.append(os.path.join(submission_dir, 'results.csv'))
     # fileNames.append(os.path.join(truth_dir, 'ground_truth.csv'))
 
-    fileNames.append(r'D:\\Nghien_cuu\\DP2VCP\\data\\output.csv')
+    fileNames.append(r'D:\\DP2VCP\\data\\output.csv')
     fileNames.append(
-        r'D:\\Nghien_cuu\\DP2VCP\\data\\vtb2022_id.txt')
-    fileNames.append(r'D:\\Nghien_cuu\\DP2VCP\\data\\list_id.txt')
+        r'D:\\DP2VCP\\data\\vtb2022_id.txt')
 
     # Process the first file
 
@@ -410,16 +409,6 @@ if __name__ == '__main__':
         print(e)
         sys.exit()
 
-    try:
-        file3 = open(fileNames[2], 'rt', encoding='utf-8')
-        text3 = file3.readlines()
-        file3.close()
-        output = text3[0]
-        IDX_sum = [int(i) for i in output[len("output.csv: "):].strip().split(', ')]
-    except Exception as e:
-        print('Invalid file gold file.', fileNames[2])
-        print(e)
-        sys.exit()
 
     trees2 = []
     segments2 = {}
@@ -452,7 +441,7 @@ if __name__ == '__main__':
     print('exactMatch')
     # print(fmap)
     # json.dump(fmap, open(
-    #     r'D:\\Nghien_cuu\\DP2VCP\\data\\test.json',
+    #     r'D:\\DP2VCP\\data\\test.json',
     #     'wt', encoding='utf8'), ensure_ascii=False)
     # mp, mr, mf, fmap = eval_submission(segments1, segments2, litIDX)
     # print("Medical")
@@ -463,7 +452,7 @@ if __name__ == '__main__':
     exactMatch = False
     precision, recall, f1score, fmap = eval_submission(segments1, segments2, total)
     json.dump(fmap, open(
-        r'D:\\Nghien_cuu\\DP2VCP\\data\\test_soft.json',
+        r'D:\\DP2VCP\\data\\test_soft.json',
         'wt', encoding='utf8'), ensure_ascii=False)
 
     print('Soft match')
